@@ -46,12 +46,14 @@ public class EReaderView extends Application implements Observer {
 		String titleAndAuthor = controller.getTitle() + " by " + controller.getAuthor();
 		Label heading = new Label();
 		heading.setText(titleAndAuthor);
+		heading.setAlignment(Pos.CENTER);
 		pane.setTop(heading);
+		pane.setAlignment(heading, Pos.CENTER);
 		
 		// TO DO: EVENT HANDLER FOR CHANGING FONT / SIZE
 		
-		// set up the pages 
-		setUpPages(pages, "Arial", 12, pane);
+		// set up the pages.  Default.
+		setUpPages(pages, "Times New Roman", 12, pane);
 		
 		// display the user's options on the side 
 		// entered info is stored in font and fontSize text fields( index 1 and 3)
@@ -88,10 +90,19 @@ public class EReaderView extends Application implements Observer {
 		fonts.getChildren().addAll(fontL, font, fontS, fontSize);
 		// entered info is stored in font and fontSize text fields( index 1 and 3)
 		
-		font.setOnAction((event) -> {
+		font.setOnAction((event) -> { // Change font.
+			String fontSizeStr = fontSize.getText();
+			int fontSizeInt = Integer.valueOf(fontSizeStr);
+			String fontType = font.getText();
+			
+			setUpPages(pages, fontType, fontSizeInt, pane);
+			
+		});
+		
+		fontSize.setOnAction((event) -> { // Change font size.
 			// Use this code to get the user entered font size when filled in
 			String fontSizeStr = fontSize.getText();
-			Integer fontSizeInt = Integer.valueOf(fontSizeStr);
+			int fontSizeInt = Integer.valueOf(fontSizeStr);
 			String fontType = font.getText();
 			
 			setUpPages(pages, fontType, fontSizeInt, pane);
