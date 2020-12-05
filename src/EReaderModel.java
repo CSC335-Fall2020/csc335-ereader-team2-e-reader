@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 
 /**
  * @author chelseybergmann, chloed
@@ -32,4 +34,6 @@ public class EReaderModel extends Observable {
 	public String getTitle() {
 		return this.book.getTitle();
 	}
+	
+
 }
