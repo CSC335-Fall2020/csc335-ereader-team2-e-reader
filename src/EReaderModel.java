@@ -176,6 +176,14 @@ public class EReaderModel extends Observable {
 		
 		
 	}
+	public Book getBook( String title ) {
+		
+		if (this.bookMap.containsKey(title)) {
+			
+			return this.bookMap.get(title);
+		}
+		return null;
+	}
 	
 	/**
 	 *  Adds a new Book Object to this model.

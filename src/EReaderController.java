@@ -49,6 +49,11 @@ public class EReaderController {
 		return this.model.getCurrentBook();
 	}
 	
+	public Book getBook(String title) {
+		
+		return this.model.getBook (title);
+	}
+	
 	public Page getPage() {
 		
 		return this.model.getCurrentPage();
