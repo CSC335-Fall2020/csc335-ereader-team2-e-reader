@@ -3,12 +3,12 @@
 /** Author: Korre Henry
  * 
  * Description: This class is used to store data related to a specific page.
- * In this fashion the a Page class is handled and should alwyas be stored
+ * In this fashion the a Page class is handled and should always be stored
  * in a Book Object.
  * 
  * This Page Class holds meta data about itself such as:
  * 		
- * 		Page Number: The Page numebr of the book it is in.
+ * 		Page Number: The Page number of the book it is in.
  * 		Book Name: The book title that it is associated to.
  * 		Page Content: Information relating to the content of the page itself.
  * 		Line Content: Information relating to the content of a specific line number.
@@ -95,7 +95,9 @@ public class Page {
 		String content = "";
 		for (String line: this.pageContent) {
 			
-			content += line +"\n";
+			if (line != null) {
+				content += line +"\n";
+			}
 			
 		}
 		return content;

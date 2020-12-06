@@ -9,6 +9,7 @@ public class Book {
 	private String title;
 	private String author;
 	private int currentPageNumber;
+	private int bookMarkedPage = -1;
 	
 	private List<Page> pages;
 	
@@ -31,6 +32,33 @@ public class Book {
 	public Page getCurrentPage() {
 		
 		return this.pageMap.get (this.currentPageNumber);
+	}
+	
+	//Sets Book Marked Page
+	public void bookMarkPage(int number) {
+		
+		this.bookMarkedPage = number;
+	}
+	
+	public Page getbookMarkedPage() {
+		
+		if (this.bookMarkedPage != -1) {
+			
+			return this.pageMap.get (this.bookMarkedPage);
+		}
+		return this.pageMap.get (1);//First page
+		
+	}
+	
+	private void setCurrentPage(int number) {
+		
+		//If Page count is in bounds
+		if (number > 0 && number <= getPageCount ()) {
+			
+			this.currentPageNumber = number;
+		}
+				
+
 	}
 	
 	public String getAuthor() {
@@ -146,7 +174,8 @@ public class Book {
 		if (this.pageMap.containsKey(pageNumber)) {
 			
 			//Sets currentPage number to given number
-			this.currentPageNumber = pageNumber;
+			setCurrentPage (pageNumber);
+			
 			return this.pageMap.get(pageNumber);
 			
 		}
@@ -178,6 +207,8 @@ public class Book {
 		//The Page doesn't exist or line count is not in bounds of th page.
 		return null;
 	}
+	
+	
 	/**
 	 * @return a List of Page Objects contained in this book object
 	 */

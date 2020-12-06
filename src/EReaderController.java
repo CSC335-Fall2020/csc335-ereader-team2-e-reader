@@ -15,6 +15,35 @@ public class EReaderController {
 		this.model = model;
 	}
 	
+	public void bookmarkPage (int number) {
+		
+		this.model.bookmarkPage(number);
+		
+	}
+	//Returns Font
+	public String getFont() {
+		
+		return this.model.getFont();
+	}
+	//Returns font size
+	public int getFontSize() {
+		return this.model.getFontSize();
+	}
+	
+	//Sets new Font type
+	public void setFont(String font) {
+		this.model.setFont(font); 
+	}
+	
+	//Gets Book Marked Page
+	public Page getBookMarkedPage() {
+		return this.model.getBookmarkedPage ();
+	}
+	//Sets new Font Size
+	public void setFontSize(int size) {
+		this.model.setFontSize( size); 
+	}
+	
 	public Book getBook() {
 		
 		return this.model.getCurrentBook();

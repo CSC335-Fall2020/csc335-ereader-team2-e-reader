@@ -22,6 +22,8 @@ public class EReaderModel extends Observable {
 	
 	private Book currBook; //Specified the current book you are looking at
 	private Page currPage;
+	private int fontSize; // Font size
+	private String fontType;//Font type
 	
 	private List <Book> bookList = new ArrayList<Book>();
 	
@@ -32,12 +34,47 @@ public class EReaderModel extends Observable {
 		// Test reading a book.
 		this.currBook = null;
 		this.currPage = null;
+		this.fontType = "Times New Roman";
+		this.fontSize = 12;
 		
 	}
 	
-	public Page getCurrentPage() {
-		return this.currPage;
+	//Returns Font
+	public String getFont() {
 		
+		return this.fontType;
+	}
+	//Returns font size
+	public int getFontSize() {
+		return this.fontSize;
+	}
+	
+	//Sets new Font type
+	public void setFont(String font) {
+		
+		if (font!= null && !font.equals("")) {
+			this.fontType = font; 
+		}
+	}
+	
+	//Sets new Font Size
+	public void setFontSize(int size) {
+		this.fontSize = size; 
+	}
+	
+	public Page getCurrentPage() {
+		return this.currBook.getCurrentPage();
+		
+	}
+	
+	public Page getBookmarkedPage () {
+		
+		return this.currBook.getbookMarkedPage();
+	}
+	
+	public void bookmarkPage(int number ) {
+	
+		this.currBook.bookMarkPage (number);
 	}
 	
 	public Book getCurrentBook() {
@@ -100,7 +137,7 @@ public class EReaderModel extends Observable {
 			this.currBook = this.bookMap.get (title);
 			
 			//Sets current page to first page of the new book
-			this.currPage = this.currBook.getPage(1);
+			this.currPage = this.currBook.getCurrentPage();
 			
 			//Notify observers that current book being observed has changed.
 			setChanged();
@@ -124,8 +161,8 @@ public class EReaderModel extends Observable {
 			
 			//Notify observers that current book being observed has changed.
 			setChanged();
-			System.out.println(" Recieved request free page number : "+ pageNumber);
-			System.out.println( "Page number we got back was : "+this.currPage.getPageNumber());
+			//System.out.println(" Recieved request free page number : "+ pageNumber);
+			//System.out.println( "Page number we got back was : "+this.currPage.getPageNumber());
 			
 			notifyObservers (this.currPage);
 			
