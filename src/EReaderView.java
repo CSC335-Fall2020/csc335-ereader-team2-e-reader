@@ -189,6 +189,15 @@ public class EReaderView extends Application implements Observer {
 			
 		});
 		
+		MenuItem changePageButton = new MenuItem ("Change Page");
+		changePageButton.setOnAction (e ->{
+			ChangePageSettings settings = new ChangePageSettings();
+			settings.showAndWait();
+			
+		});
+		
+		
+		
 		MenuItem bookMarkButton = new MenuItem ("Bookmark Page");
 		bookMarkButton.setOnAction (e ->{
 			this.controller.bookmarkPage (this.controller.getPage().getPageNumber());
@@ -196,7 +205,7 @@ public class EReaderView extends Application implements Observer {
 			
 		});
 		
-		fileMenuBox.getItems().addAll(newBookButton, bookMarkButton);
+		fileMenuBox.getItems().addAll(newBookButton, changePageButton, bookMarkButton);
 		
 		//For File Menu
 		MenuBar fileMenuBar = new MenuBar (fileMenuBox);
@@ -601,7 +610,7 @@ public class EReaderView extends Application implements Observer {
 		//List of Font Types
 		private ChoiceBox<String> dropDownList = new ChoiceBox<String>();
 		private TextField chapter;
-		private TextField pageNumber;
+		private TextField pageNumber = new TextField("");
 
 
 		
@@ -612,6 +621,7 @@ public class EReaderView extends Application implements Observer {
 			VBox list = new VBox();
 			initModality(Modality.APPLICATION_MODAL);
 
+			System.out.println("I was called to help!");
 			
 			Label fontLabel = new Label("Chapter ");
 			Label fontSizeLabel = new Label("Go to Page : ");
@@ -624,13 +634,14 @@ public class EReaderView extends Application implements Observer {
 			//Sets current font to the one that is currently set
 			this.dropDownList.setValue(controller.getFont());
 			
-			//this.pageNumber = new TextField("1");
+			
 			this.pageNumber.setPromptText("Type Page Number Here");
 			//this.fontSize = new TextField(String.valueOf(controller.getFontSize()));
 			
 			properties.getChildren().addAll(fontLabel, this.dropDownList, fontSizeLabel,
 					this.pageNumber);
-			properties.setPadding(new Insets(10, 0, 10, 0));
+			properties.setPadding(new Insets(10, 10, 10, 10));
+			properties.setSpacing(15);
 			
 			Button ok = new Button("OK");
 			Button cancel = new Button("Cancel");
@@ -671,24 +682,13 @@ public class EReaderView extends Application implements Observer {
 			b.setCenter(list);
 			b.setBottom(buttons);
 			
-			Scene s = new Scene(b, 400, 150);
+			Scene s = new Scene(b, 600, 150);
 			
 			setScene(s);
-			setTitle("Reading View Settings");
+			setTitle("Change Page Settings");
 			
 		}
 		
-		/*
-		public int getFontSize() {
-			
-			return Integer.parseInt (this.fontSize.getText());
-		}
-		
-		public String getFont() {
-			
-			return this.dropDownList.getValue();
-		}
-		*/
 
 		
 	}
