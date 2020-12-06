@@ -1,4 +1,6 @@
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author chelseybergmann, chloed
@@ -13,15 +15,33 @@ public class EReaderController {
 		this.model = model;
 	}
 	
-	public List<String[]> getPages() {
-		return model.createPages();
+	public List<Page> getPages() {
+		return this.model.getPages();
 	}
 	
 	public String getAuthor() {
-		return model.getAuthor();
+		return this.model.getAuthor();
 	}
 	
 	public String getTitle() {
-		return model.getTitle();
+		return this.model.getTitle();
+	}
+	
+	public void addBook (String fileName) throws FileNotFoundException {
+		
+		//Adds book to the model
+		this.model.addBook (fileName);
+	}
+	
+	//Returns a set of titles of books in the model object
+	public Set<String> getBookTitleList () {
+		
+		return this.model.getBookTitles();
+	}
+	
+	//Return the list of book objects that this model holds
+	public List<Book> getBookList (){
+		
+		return this.model.getBookList();
 	}
 }

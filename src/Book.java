@@ -6,24 +6,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Book {
-	String title;
-	String author;
-	List<Page> pages;
+	private String title;
+	private String author;
+	private List<Page> pages;
 	
 	//Maps a page number to a specific page object.
 	HashMap< Integer, Page > pageMap = new HashMap<Integer, Page> ();
 	
 	public Book(String fileName) throws FileNotFoundException {
-		pages = new ArrayList<Page>();
+		this.pages = new ArrayList<Page>();
 		read(fileName);
 	}
 	
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 	
 	public String getAuthor() {
-		return author;
+		return this.author;
 	}
 	
 	private void read(String fileName) throws FileNotFoundException {
@@ -70,40 +70,56 @@ public class Book {
 		//Page number start at 1.
 		int pageNumber = 1;
 		
-			while (scanner.hasNextLine()) {
+		//For all the lines in the file.
+		while (scanner.hasNextLine()) {
 				
-					for (int i = 0; i < lineCount; i++) {
+				for (int i = 0; i < lineCount; i++) {
 						
-						//Gets Next line in page
-						if (scanner.hasNextLine()) {
-							content[i] = scanner.nextLine();
-						}
-						else {
-							//No more lines are left to add to this page
-							break;
-						}
+					//Gets Next line in page
+					if (scanner.hasNextLine()) {
+						content[i] = scanner.nextLine();
 					}
+					else {
+						//No more lines are left to add to this page
+						break;
+					}
+				}
 					
-					//Page Object with containing page number, book title and 
-					//content of this page
-					Page pageObj = new Page (this.title, pageNumber, content  );
+				//Page Object with containing page number, book title and 
+				//content of this page
+				Page pageObj = new Page (this.title, pageNumber, content  );
 					
-					//Adds Page object to the Pages Hash Map.
-					//Maps Page Number to the page Object.
-					this.pageMap.put (pageNumber, pageObj);
+				//Adds Page object to the Pages Hash Map.
+				//Maps Page Number to the page Object.
+				this.pageMap.put (pageNumber, pageObj);
 					
-					//Adds Page object to the 
-					this.pages.add(pageObj);
+				//Adds Page object to the 
+				this.pages.add(pageObj);
 					
 					
-					//Reset list of Strings
-					content = new String[lineCount];
+				//Reset list of Strings
+				content = new String[lineCount];
 					
-					//Go on to the next page.
-					pageNumber++;
-			}
-					
+				//Go on to the next page.
+				pageNumber++;
 		}
+		
+		//No more lines pages left to make
+
+					
+	
+	}
+	
+	
+	/**
+	 * @returns the number of pages this book has.
+	 */
+	 public int getPageCount (){
+	 
+		 return this.pages.size();
+	 }
+	 
+	 
 	
 	
 	/**
@@ -150,6 +166,6 @@ public class Book {
 	 * @return a List of Page Objects contained in this book object
 	 */
 	public List<Page> getPages() {
-		return pages;
+		return this.pages;
 	}
 }

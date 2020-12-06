@@ -11,6 +11,7 @@
  * 		Page Number: The Page numebr of the book it is in.
  * 		Book Name: The book title that it is associated to.
  * 		Page Content: Information relating to the content of the page itself.
+ * 		Line Content: Information relating to the content of a specific line number.
  * 
  */
 public class Page {
