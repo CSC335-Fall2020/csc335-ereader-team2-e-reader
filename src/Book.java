@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class Book {
 	private String title;
 	private String author;
+	private int currentPageNumber;
+	
 	private List<Page> pages;
 	
 	//Maps a page number to a specific page object.
@@ -15,11 +17,20 @@ public class Book {
 	
 	public Book(String fileName) throws FileNotFoundException {
 		this.pages = new ArrayList<Page>();
+		System.out.print ("Book being made with " + fileName);
 		read(fileName);
+		
+		//Sets current page to 1
+		this.currentPageNumber = 1;
 	}
 	
 	public String getTitle() {
 		return this.title;
+	}
+	
+	public Page getCurrentPage() {
+		
+		return this.pageMap.get (this.currentPageNumber);
 	}
 	
 	public String getAuthor() {
@@ -35,24 +46,26 @@ public class Book {
 			String curr = scanner.nextLine();
 			String[] split = curr.split(": ");
 			if (curr.startsWith("Author")) {
-				author = split[1];
+				System.out.print ("Book title set as "+split[1]);
+				this.author = split[1];
 			} else if (curr.startsWith("Title")) {
-				title = split[1];
+				this.title = split[1];
 				
-				//else if (curr.startsWith("***")) -- Chelsey's previous code
-				
-			} else {
-				
-				int lineCount = 50; //Specifies the line count per page, it is set to be 50
-				buildPages(scanner, lineCount);
-				
-				//Done creating pages from this file.
-				break; 
-
 			}
 			
-			
+			if (this.title != null && this.author != null && curr.startsWith("***")) {
+				break;
+			}
 		}
+
+			
+		//Start building pages
+		int lineCount = 50;
+		buildPages(scanner, lineCount);
+		//Specifies the line count per page, it is set to be 50
+			
+			
+		
 		
 	}
 	
@@ -132,7 +145,10 @@ public class Book {
 		
 		if (this.pageMap.containsKey(pageNumber)) {
 			
+			//Sets currentPage number to given number
+			this.currentPageNumber = pageNumber;
 			return this.pageMap.get(pageNumber);
+			
 		}
 		return null;
 	}

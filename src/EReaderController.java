@@ -15,16 +15,41 @@ public class EReaderController {
 		this.model = model;
 	}
 	
+	public Book getBook() {
+		
+		return this.model.getCurrentBook();
+	}
+	
+	public Page getPage() {
+		
+		return this.model.getCurrentPage();
+	}
+	
 	public List<Page> getPages() {
 		return this.model.getPages();
 	}
 	
 	public String getAuthor() {
+ 
 		return this.model.getAuthor();
 	}
 	
 	public String getTitle() {
+		
 		return this.model.getTitle();
+	}
+	
+	//Changes model current page page state to the given page number
+	public boolean goToPage(int pageNumber) {
+
+		return this.model.changePage(pageNumber);
+	}
+	
+	//Changes model state to go to a different book;
+	public void changeBook ( String title) {
+		
+		this.model.changeBook(title);
+		
 	}
 	
 	public void addBook (String fileName) throws FileNotFoundException {
