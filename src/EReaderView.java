@@ -626,13 +626,14 @@ public class EReaderView extends Application implements Observer {
 			Label fontLabel = new Label("Chapter ");
 			Label fontSizeLabel = new Label("Go to Page : ");
 			
-			//List of fonts to choose from
-			this.dropDownList.getItems().add("1");
-			this.dropDownList.getItems().add("2");
-			//this.dropDownList.getItems().add("Other");
+			//
+			for (int i = 1; i < controller.getNumberOfChapters(); i++) {
+				this.dropDownList.getItems().add(String.valueOf(i));
+			}
+
 			
 			//Sets current font to the one that is currently set
-			this.dropDownList.setValue(controller.getFont());
+			//this.dropDownList.setValue(controller.getChapter);
 			
 			
 			this.pageNumber.setPromptText("Type Page Number Here");
@@ -649,7 +650,14 @@ public class EReaderView extends Application implements Observer {
 			ok.setOnAction((e) -> {
 				
 				String pageNumber = this.pageNumber.getText();
-				int pageInt = Integer.valueOf(pageNumber);
+				
+				int pageInt = controller.getPage().getPageNumber();
+				if (!pageNumber.equals("")) {
+					pageInt = Integer.valueOf(pageNumber);
+				}
+				
+				
+				
 				//String chapaterNumber = this.dropDownList.getValue();
 				
 				//Sets New Font Size and Font Type in the model

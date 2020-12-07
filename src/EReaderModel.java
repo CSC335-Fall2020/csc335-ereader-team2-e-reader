@@ -67,6 +67,17 @@ public class EReaderModel extends Observable {
 		
 	}
 	
+	public Page getChapter( int number) {
+		return this.currBook.getChapter( number);
+		
+	}
+	
+	public int getNumberOfChapters() {
+		return this.currBook.getNumberOfChapters();
+	}
+	
+	
+	
 	public Page getBookmarkedPage () {
 		
 		return this.currBook.getbookMarkedPage();

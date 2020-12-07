@@ -10,6 +10,7 @@ public class Book {
 	private String author;
 	private int currentPageNumber;
 	private int bookMarkedPage = -1;
+	private int chapterNumber = 1;
 	
 	private List<Page> pages;
 	
@@ -36,6 +37,26 @@ public class Book {
 		return this.pageMap.get (this.currentPageNumber);
 	}
 	
+	public int getCurrentChapter() {
+		
+		return this.chapterNumber;
+	}
+	
+	public Page getChapter (int number) {
+		
+		if (this.chapterMap.containsKey(number)) {
+			
+			setCurrentPage (number);
+			return this.chapterMap.get (number);
+		}
+		return this.pageMap.get (this.currentPageNumber);
+		
+	}
+	
+	public int getNumberOfChapters() {
+		return this.chapterMap.size();
+	}
+	
 	//Sets Book Marked Page
 	public void bookMarkPage(int number) {
 		
@@ -58,6 +79,7 @@ public class Book {
 		if (number > 0 && number <= getPageCount ()) {
 			
 			this.currentPageNumber = number;
+			
 		}
 				
 
@@ -112,6 +134,8 @@ public class Book {
 		
 		//Page number start at 1.
 		int pageNumber = 1;
+		int chapterNumber = 1;
+		boolean newChapter = false;
 		
 		//For all the lines in the file.
 		while (scanner.hasNextLine()) {
@@ -120,7 +144,15 @@ public class Book {
 						
 					//Gets Next line in page
 					if (scanner.hasNextLine()) {
-						content[i] = scanner.nextLine();
+						
+						String line = scanner.nextLine();
+						if(line.startsWith("CHAPTER")) {
+							
+							newChapter = true;
+							
+							
+						}
+						content[i] = line;
 					}
 					else {
 						//No more lines are left to add to this page
@@ -131,10 +163,19 @@ public class Book {
 				//Page Object with containing page number, book title and 
 				//content of this page
 				Page pageObj = new Page (this.title, pageNumber, content  );
+				
+				if(newChapter ) {
+					
+					this.chapterMap.put (chapterNumber, pageObj);
+					chapterNumber++;
+					newChapter = false;
+				}
 					
 				//Adds Page object to the Pages Hash Map.
 				//Maps Page Number to the page Object.
 				this.pageMap.put (pageNumber, pageObj);
+				
+				
 					
 				//Adds Page object to the 
 				this.pages.add(pageObj);

@@ -49,6 +49,14 @@ public class EReaderController {
 		return this.model.getCurrentBook();
 	}
 	
+	public Page getChapter ( int number) {
+		return this.model.getChapter(number);
+	}
+	
+	public int getNumberOfChapters() {
+		return this.model.getNumberOfChapters();
+	}
+	
 	public Book getBook(String title) {
 		
 		return this.model.getBook (title);
