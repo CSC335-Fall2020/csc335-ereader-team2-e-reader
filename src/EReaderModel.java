@@ -161,8 +161,7 @@ public class EReaderModel extends Observable {
 			
 			//Notify observers that current book being observed has changed.
 			setChanged();
-			//System.out.println(" Recieved request free page number : "+ pageNumber);
-			//System.out.println( "Page number we got back was : "+this.currPage.getPageNumber());
+
 			
 			notifyObservers (this.currPage);
 			

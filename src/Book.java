@@ -16,6 +16,8 @@ public class Book {
 	//Maps a page number to a specific page object.
 	HashMap< Integer, Page > pageMap = new HashMap<Integer, Page> ();
 	
+	HashMap<Integer, Page> chapterMap = new HashMap <Integer, Page>();
+	
 	public Book(String fileName) throws FileNotFoundException {
 		this.pages = new ArrayList<Page>();
 		System.out.print ("Book being made with " + fileName);
