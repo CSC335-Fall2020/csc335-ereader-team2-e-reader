@@ -22,7 +22,6 @@ public class Page {
 	
 	
 	/**
-	 * 
 	 * @purpose: Constructs a new Page object instance with
 	 * a reference to the title of the E-Book it came from, 
 	 * its page number and the stream on content contained
@@ -40,25 +39,19 @@ public class Page {
 	 */
 	Page (String bookName, int number, String[] content){
 		
-		this.bookName = bookName;
-		
+		this.bookName = bookName;	
 		this.pageNumber = number;
-		
 		this.pageContent = content;
 	}
 	
 	
 	
 	/**
-	 * 
-	 * @return string value of the Book title that this page is
-	 * created from.
+	 * Purpose: Gets the title.
+	 * @return the title as a string
 	 */
 	public String getBookName () {
-		
-		
 		return this.bookName;
-		
 	}
 	
 	

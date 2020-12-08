@@ -1,9 +1,12 @@
 /**
- * @author chelseybergmann
- * @author chloed
+ * @author chelseybergmann, chloed, Korre Henry
  * File: EReaderView.java
  * Project: Final Project - E-Reader
- * Purpose: This class is the gui view that displays the reader.
+ * Purpose: This class is the gui view that displays the reader.  It starts out with
+ * a book on page one with book and single page options.  The user can add a new book,
+ * change the current book from a selection of books, bookmark a page, change the font
+ * and font size, and has the ability to search by title name or author.  It keeps track
+ * of where the user left off and has navigation buttons to flip the pages.
  **/
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,7 +47,6 @@ public class EReaderView extends Application implements Observer {
 	BorderPane pane;
 	EReaderController controller;
 	VBox headers = new VBox();
-
 	
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -56,8 +58,6 @@ public class EReaderView extends Application implements Observer {
 		//Adds this class object as it's observer
 		model.addObserver(this);
 		this.controller = new EReaderController(model);
-	
-
 		
 		// Adds book to the model
 		this.controller.addBook ("Books/salembelle.txt");
@@ -73,11 +73,14 @@ public class EReaderView extends Application implements Observer {
 		//Sets Heading
 		this.pane.setTop (this.headers);
 
-		
 		// Set and display scene.
 		setScene(this.pane, stage); 
 	}
 	
+	/**
+	 * @purpose Displays the heading.
+	 * @param titleHeader a borderPane obj
+	 */
 	private void displayHeading ( BorderPane titleHeader ) {
 		// create heading 
 		System.out.println ("This is title :"+this.controller.getTitle());
@@ -87,10 +90,8 @@ public class EReaderView extends Application implements Observer {
 		heading.setAlignment(Pos.CENTER);
 		
 		titleHeader.setTop(heading);
-		titleHeader.setAlignment(heading, Pos.CENTER);
-		
+		BorderPane.setAlignment(heading, Pos.CENTER);	
 	}
-	
 	
 	/**
 	 * Purpose: Displays the current page and its options.
@@ -103,24 +104,27 @@ public class EReaderView extends Application implements Observer {
 		String pageText = page.getContent(); //Gets content from page object
 
 		//Displays Page options
-		pageOptions(page);
-		
+		pageOptions(page);	
 		
 		currPage.setText(pageText);
 		currPage.setFont(new Font(this.controller.getFont(), this.controller.getFontSize()));
 		this.pane.setCenter(currPage);
 	}
 	
+	/**
+	 * Purpose: Shows the page's options such as its page number and prev and next buttons.
+	 * @param page the current page disolayed
+	 * @throws FileNotFoundException
+	 */
 	private void pageOptions(Page page) throws FileNotFoundException {
 		
 		VBox sidePanel = new VBox ();
 		Label pageProgress = new Label (
 				String.valueOf ("Page "+this.controller.getPage().getPageNumber())+
 				" of "+ String.valueOf(this.controller.getPages().size())
-				+" Pages "
-				
-				);
-		HBox pageArrows = new HBox ();
+				+" Pages ");
+		
+		HBox pageArrows = new HBox();
 		
 		//Creates Right Arrow Button
         FileInputStream input = new FileInputStream("Images/rightArrowButton.png");
@@ -138,8 +142,7 @@ public class EReaderView extends Application implements Observer {
 			pageNumber++;//Go to the next Page;
 			
 			this.controller.goToPage(pageNumber);
-		});
-		
+		});	
 		
 		//Creates Left Arrow Button
         FileInputStream input2 = new FileInputStream("Images/leftArrowButton.png");
@@ -171,6 +174,11 @@ public class EReaderView extends Application implements Observer {
 		return ;
 	}
 	
+	/**
+	 * Purpose: Sets the scene to display on the gui.
+	 * @param pane a borderPane obj.
+	 * @param stage the current stage to set the scene
+	 */
 	private void setScene(BorderPane pane, Stage stage) {
 		Scene scene = new Scene(pane, 900, 600);    
 		stage.setTitle("E-Reader GUI View");   
@@ -178,7 +186,10 @@ public class EReaderView extends Application implements Observer {
 		stage.show(); 
 	}
 	
-	
+	/**
+	 * Purpose: Displays the File and View settings along with inner settings such as
+	 * New Book, Bookmark Page, and a font type and size changer. 
+	 */
 	public void displayMenuPanel() {
 		
 		//Creates File Menu Toggle
@@ -201,9 +212,7 @@ public class EReaderView extends Application implements Observer {
 		
 		MenuItem bookMarkButton = new MenuItem ("Bookmark Page");
 		bookMarkButton.setOnAction (e ->{
-			this.controller.bookmarkPage (this.controller.getPage().getPageNumber());
-	
-			
+			this.controller.bookmarkPage (this.controller.getPage().getPageNumber());			
 		});
 		
 		fileMenuBox.getItems().addAll(newBookButton, changePageButton, bookMarkButton);
@@ -230,19 +239,17 @@ public class EReaderView extends Application implements Observer {
 		
 		BorderPane titleHeader = new BorderPane ();
 		displayHeading ( titleHeader);
-		this.headers.getChildren().add(titleHeader);
-		
-
-		
+		this.headers.getChildren().add(titleHeader);	
 	}
 	
 	
-	
-	
+	/**
+	 * Purpose: Updates the e-reader view.
+	 * @param o the observable class
+	 * @param arg the object to update the display with
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
-
-
 		EReaderModel model = (EReaderModel) o;
 		
 		Page page = (Page) (arg);
@@ -251,22 +258,21 @@ public class EReaderView extends Application implements Observer {
 		BorderPane borderPane = (BorderPane) this.headers.getChildren().get(1);
 		Label label = (Label) borderPane.getChildren().get(0);
 		label.setText(model.getTitle());
-		
-		
+
 		try {
 			//Re Renders a save stated page
 			displayPage(page);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
-	
+	/**
+	 * Purpose: Displays the settings for the curr book be to searched by
+	 * title or author and the list of books as a filtered list.
+	 */
 	private class BookListViewSettings extends Stage {
-		
-
 		
 		//Search By Type of Title Or Author name;
 		private ChoiceBox<String> searchByList = new ChoiceBox<String>();
@@ -291,10 +297,6 @@ public class EReaderView extends Application implements Observer {
 		
 		//Table view of books
 		private TableView<BookView> bookViewTable = new TableView<BookView> ();
-
-		
-
-
 		
 		@SuppressWarnings("unchecked")
 		public BookListViewSettings() {
@@ -312,7 +314,6 @@ public class EReaderView extends Application implements Observer {
 
 			//On Search Click stores the value in the model
 			this.bookViewTable.setOnMousePressed( e -> {
-				
 				clickItem(e);
 			});
 			//Search by Author or Title name
@@ -348,13 +349,10 @@ public class EReaderView extends Application implements Observer {
 	        authorNameCol.setCellValueFactory(
 	                new PropertyValueFactory<BookView, String>("bookAuthor"));
 
-	        
-
 			
 	        this.bookViewTable.setItems(this.flBooks);//Set the table's items using the filtered list
 	        this.bookViewTable.getColumns().addAll(bookNameCol, authorNameCol);
 	        
-			
 			
 			properties.getChildren().addAll(bookList, this.searchByList, this.searchBar);
 			properties.setPadding(new Insets(10, 0, 30, 0));
@@ -382,16 +380,14 @@ public class EReaderView extends Application implements Observer {
 					e1.printStackTrace();
 				}
 				
-				hide();
-
-				
+				hide();		
 			});
 			
 			cancel.setOnAction( (event) -> {
 				//Leaves wasCanceled boolean to off.
 				hide();
-				
 			});
+			
 			buttons.getChildren().addAll(ok, cancel);
 			
 			list.getChildren().addAll(rightList);
@@ -414,7 +410,10 @@ public class EReaderView extends Application implements Observer {
 			setTitle("Reading View Settings");
 			
 		}
-		
+		/**
+		 * Purpose: Gets the new chosen book clicked by the user in the table.
+		 * @param event
+		 */
 		@FXML
 		public void clickItem(MouseEvent event)
 		{
@@ -438,7 +437,9 @@ public class EReaderView extends Application implements Observer {
 		    
 		}
 
-		
+		/**
+		 * Purpose: Creates the list/selection of books.
+		 */
 		public void createBookViewList () {
 			
 			for (Book book: controller.getBookList()) {
@@ -454,61 +455,58 @@ public class EReaderView extends Application implements Observer {
 			}
 		}
 		
+		/**
+		 * Purpose: Displays the current book's title and author.
+		 */
 		public class BookView {
 
 	        private final SimpleStringProperty bookTitle;
 	        private final SimpleStringProperty bookAuthor;
 
-
-	        BookView(String title, String author)
-	        {
+	        
+	        /**
+	         * Purpose: Initializes the title and string with the passed in ones.
+	         * @param title
+	         * @param author
+	         */
+	        BookView(String title, String author) {
 	            this.bookTitle = new SimpleStringProperty(title);
 	            this.bookAuthor = new SimpleStringProperty(author);
 
 	        }
-
-	        public String getBookTitle()
-	        {
+	        
+	        /**
+	         * Purpose: Gets the book's title.
+	         * @return the title
+	         */
+	        public String getBookTitle() {
 	            return this.bookTitle.get();
 	        }
-
-	        public void setBookTitle(String title)
-	        {
-	        	this.bookTitle.set(title);
-	        }
-
-	        public String getBookAuthor()
-	        {
+	        
+	        /**
+	         * Purpose: Get the book's author.
+	         * @return
+	         */
+	        public String getBookAuthor() {
 	            return this.bookAuthor.get();
 	        }
-
-	        public void setBookAuthor(String author)
-	        {
-	        	this.bookAuthor.set(author);
-	        }
-
-
 	    }
-
 		
 	}
 	
-	
-	
-	
+	/**
+	 * Purpose: Allows the user to change the font and size of the reading.
+	 */
 	private class ReadingViewSettings extends Stage {
-		
-
-		
-		//private RadioButton human;
-		//private RadioButton computer;
 		
 		//List of Font Types
 		private ChoiceBox<String> dropDownList = new ChoiceBox<String>();
 		private TextField fontSize;
 
 
-		
+		/**
+		 * Purpose: Initializes the font and size settings.
+		 */
 		public ReadingViewSettings() {
 			
 			HBox properties = new HBox();
@@ -578,7 +576,8 @@ public class EReaderView extends Application implements Observer {
 			
 			setScene(s);
 			setTitle("Reading View Settings");
-			
+		}	
+	}	
 		}
 		
 		
@@ -705,5 +704,4 @@ public class EReaderView extends Application implements Observer {
 
 		
 	}
-	
 }
