@@ -66,8 +66,8 @@ public class EReaderModel extends Observable {
 		
 	}
 	
-	/** 
-	 * 
+	/**
+	 * Purpose: Returns the Font
 	 * @return the string value of the font 
 	 * type that this model is currently broadcasting.
 	 */
@@ -75,8 +75,10 @@ public class EReaderModel extends Observable {
 		
 		return this.fontType;
 	}
+
 	/**
-	 *
+	 * Purpose: Returns the Font size
+	 * @return an int
 	 * @return the integer value of the font size 
 	 */
 	public int getFontSize() {
@@ -109,7 +111,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the current page, a page object.
 	 * @return the Page Object that is currently being 
 	 * viewed by this model object.
 	 */
@@ -119,7 +121,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose:  Gets the bookmarked page. 
 	 * @param number given a number as an integer value,
 	 * 
 	 * @return that Page object that contains the beginning of the 
@@ -166,7 +168,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the current book. 
 	 * @return the Book Object that this model is currently holding
 	 * or broadcasting as the E-Book being viewed.
 	 */
@@ -175,7 +177,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the pages of the current book.
 	 * @return List of Page objects that are contained in the Book
 	 * object that this model is currently broadcasting as the current Book
 	 * being viewed.
@@ -187,7 +189,7 @@ public class EReaderModel extends Observable {
 	
 	
 	/**
-	 * 
+	 * Purpose: gets the author.
 	 * @return current Book Author being observed
 	 */
 	public String getAuthor() {
@@ -197,7 +199,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the title. 
 	 * @return String value of current book title being observed
 	 */
 	public String getTitle() {
@@ -205,7 +207,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: gets the book list.
 	 * @return List Object of books, List of book objects
 	 */
 	public List<Book> getBookList(){
@@ -214,7 +216,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the title of all books.
 	 * @return Set of String objects representing the titles 
 	 * of all the books contained in this model object.
 	 */
@@ -224,8 +226,8 @@ public class EReaderModel extends Observable {
 		
 	}
 	
+
 	/**
-	 * 
 	 * @purpose: Given a book title, changes the currBook being observed to 
 	 * the new book title given.
 	 * 
@@ -256,7 +258,6 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
 	 * @purpose: Changes to the page number that is given
 	 * as pageNunber* .
 	 * 
@@ -283,11 +284,8 @@ public class EReaderModel extends Observable {
 			return true;
 		}
 		
-		//Indicates page number is out of pounds;
-		return false;
-
-		
-		
+		//Indicates page number is out of bounds;
+		return false;	
 		
 	}
 	
@@ -340,6 +338,5 @@ public class EReaderModel extends Observable {
 		this.bookList.add( newBook);
 		
 	}
-	
 
 }
