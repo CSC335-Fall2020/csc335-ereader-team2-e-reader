@@ -4,7 +4,6 @@
  * Project: Final Project - E-Reader
  * Purpose: This class is the gui view that displays the reader.
  **/
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Observable;
@@ -591,13 +590,21 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	
+	/**
+	 * 
+	 * @author korrehenry
+	 * 
+	 * Description: This ChangePageSettings class is a private class
+	 * use to display a Change Page Settings Modal in this
+	 * program.
+	 *
+	 */
 	private class ChangePageSettings extends Stage {
 		
 
 		
 		//private RadioButton human;
 		//private RadioButton computer;
-		
 		//List of Font Types
 		private ChoiceBox<String> dropDownList = new ChoiceBox<String>();
 		private TextField chapter;
