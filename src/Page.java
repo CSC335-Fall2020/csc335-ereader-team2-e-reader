@@ -1,6 +1,5 @@
-
-
-/** Author: Korre Henry
+/** 
+ * @author: Korre Henry
  * 
  * Description: This class is used to store data related to a specific page.
  * In this fashion the a Page class is handled and should always be stored
@@ -22,7 +21,23 @@ public class Page {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @purpose: Constructs a new Page object instance with
+	 * a reference to the title of the E-Book it came from, 
+	 * its page number and the stream on content contained
+	 * on the specified page number.
+	 * 
+	 * @param bookName, the the Book title that this page is
+	 * created from.
+	 * 
+	 * @param number, page number that this stream of content
+	 * was derived from.
+	 * 
+	 * @param content, the string array of lines of content
+	 * contained in the section of some page number in the 
+	 * program's read-in E-Book reference.
+	 */
 	Page (String bookName, int number, String[] content){
 		
 		this.bookName = bookName;
@@ -34,7 +49,11 @@ public class Page {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return string value of the Book title that this page is
+	 * created from.
+	 */
 	public String getBookName () {
 		
 		
@@ -43,6 +62,12 @@ public class Page {
 	}
 	
 	
+	/** 
+	 * @returns the integer value of page 
+	 * number that is associated with this meta 
+	 * data contained in this Page object.
+	 * 
+	 */
 	public int getPageNumber () {
 		
 		
@@ -62,7 +87,7 @@ public class Page {
 	
 	/**
 	 * 
-	 * Given a line number returns the content of the specified line number 
+	 * @purpose: Given a line number returns the content of the specified line number 
 	 * as a string value string. This is not indexed at 0. Should be given values 
 	 * higher than 0.
 	 * 
@@ -87,7 +112,8 @@ public class Page {
 	}
 	
 	
-	/** @returns All the lines in this Page object as one String delimited by new line characters.
+	/** 
+	 * @returns All the lines in this Page object as one String delimited by new line characters.
 	 * 
 	 */
 	public String getContent() {
