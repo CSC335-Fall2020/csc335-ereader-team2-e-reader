@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class Book {
 	private String title;
 	private String author;
+	private String fileName;
 	private int currentPageNumber;
 	private int bookMarkedPage = -1;
 	
@@ -26,13 +27,22 @@ public class Book {
 	//Maps a page number to a specific page object.
 	HashMap< Integer, Page > pageMap = new HashMap<Integer, Page> ();
 	
+	// Already created books.
 	public Book(String fileName) throws FileNotFoundException {
 		this.pages = new ArrayList<Page>();
 		System.out.print ("Book being made with " + fileName);
 		read(fileName);
-		
+		this.fileName = fileName;
 		//Sets current page to 1
 		this.currentPageNumber = 1;
+	}
+	
+	// User is creating a book.
+	public Book(String title, String author, String fileName) {
+		this.title = title;
+		this.author = author;
+		this.fileName = fileName;
+		read(title, author, fileName);
 	}
 	
 	/**
@@ -98,6 +108,13 @@ public class Book {
 		return this.author;
 	}
 	
+	/*
+	 * Purpose: Reads the newly added book to get its pages.
+	 */
+	private void read(String title, String author, String fileName) {
+		
+	}
+	
 	/**
 	 * Purpose: Reads the book by extracting the title, author, and each page with
 	 * 50 lines per page.
@@ -113,7 +130,7 @@ public class Book {
 			String curr = scanner.nextLine();
 			String[] split = curr.split(": ");
 			if (curr.startsWith("Author")) {
-				System.out.print ("Book title set as "+split[1]);
+				System.out.print ("Book title set as "+ split[1]);
 				this.author = split[1];
 			} else if (curr.startsWith("Title")) {
 				this.title = split[1];
