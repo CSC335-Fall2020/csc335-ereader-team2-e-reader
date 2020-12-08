@@ -40,17 +40,29 @@ public class EReaderModel extends Observable {
 		
 	}
 	
-	//Returns Font
+	//
+	
+	/**
+	 * Purpose: Returns the Font
+	 * @return a string
+	 */
 	public String getFont() {
 		
 		return this.fontType;
 	}
-	//Returns font size
+	
+	/**
+	 * Purpose: Returns the Font size
+	 * @return an int
+	 */
 	public int getFontSize() {
 		return this.fontSize;
 	}
 	
-	//Sets new Font type
+	/**
+	 * Purpose: Sets the Font.
+	 *@param font the new font as a string
+	 */
 	public void setFont(String font) {
 		
 		if (font!= null && !font.equals("")) {
@@ -58,30 +70,53 @@ public class EReaderModel extends Observable {
 		}
 	}
 	
-	//Sets new Font Size
+	/**
+	 * Purpose: Sets the font size.
+	 * @param size
+	 */
 	public void setFontSize(int size) {
 		this.fontSize = size; 
 	}
 	
+	/**
+	 * Purpose: Gets the current page, a page object.
+	 * @return page
+	 */
 	public Page getCurrentPage() {
 		return this.currBook.getCurrentPage();
 		
 	}
 	
+	/**
+	 * Purpose:  Gets the bookmarked page.
+	 * @return a page
+	 */
 	public Page getBookmarkedPage () {
 		
 		return this.currBook.getbookMarkedPage();
 	}
 	
+	/**
+	 * Purpose: Bookmarks a page.
+	 * @param the page number
+	 */
 	public void bookmarkPage(int number ) {
 	
 		this.currBook.bookMarkPage (number);
 	}
 	
+	/**
+	 * Purpose: Gets the current book.
+	 * @return a book object
+	 */
 	public Book getCurrentBook() {
 		return this.currBook;
 	}
 	
+	/**
+	 * Purpose: Gets the pages of the current book.
+	 * @return a list of pages
+	 */
 	public List<Page> getPages() {
 		List<Page> pages = this.currBook.getPages();
 		return pages;
@@ -89,7 +124,7 @@ public class EReaderModel extends Observable {
 	
 	
 	/**
-	 * 
+	 * Purpose: gets the author.
 	 * @return current Book Author being observed
 	 */
 	public String getAuthor() {
@@ -99,7 +134,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the title.
 	 * @return current book title being observed
 	 */
 	public String getTitle() {
@@ -107,7 +142,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: gets the book list.
 	 * @return List of book objects
 	 */
 	public List<Book> getBookList(){
@@ -116,7 +151,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the title of all books.
 	 * @return Set of String objects representing the titles 
 	 * of all the books contained in this model object.
 	 */
@@ -127,9 +162,9 @@ public class EReaderModel extends Observable {
 	}
 	
 	/*
-	 * 
-	 * Given a book title, changes the currBook being observed to 
+	 * Purpose: Given a book title, changes the currBook being observed to 
 	 * the new book title given.
+	 * @param title
 	 */
 	public boolean changeBook( String title) {
 		
@@ -153,6 +188,11 @@ public class EReaderModel extends Observable {
 		return false;
 	}
 	
+	/**
+	 * Purpose: Changes the page to a new one.
+	 * @param pageNumber
+	 * @return that the page number is in bounds
+	 */
 	public boolean changePage(int pageNumber) {
 		
 		Page pageObj = this.currBook.getPage (pageNumber);
@@ -170,16 +210,13 @@ public class EReaderModel extends Observable {
 			return true;
 		}
 		
-		//Indicates page number is out of pounds;
-		return false;
-
-		
-		
+		//Indicates page number is out of bounds;
+		return false;	
 		
 	}
 	
 	/**
-	 *  Adds a new Book Object to this model.
+	 *  Purpose: Adds a new Book Object to this model.
 	 *  
 	 * @param fileName
 	 * @throws FileNotFoundException
@@ -208,6 +245,5 @@ public class EReaderModel extends Observable {
 		this.bookList.add( newBook);
 		
 	}
-	
 
 }
