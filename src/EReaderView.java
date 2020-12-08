@@ -129,7 +129,7 @@ public class EReaderView extends Application implements Observer {
 				" of "+ String.valueOf(this.controller.getPages().size())
 				+" Pages ");
 		
-		HBox pageArrows = new HBox ();
+		HBox pageArrows = new HBox();
 		
 		//Creates Right Arrow Button
         FileInputStream input = new FileInputStream("Images/rightArrowButton.png");

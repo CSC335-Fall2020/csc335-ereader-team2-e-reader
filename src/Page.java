@@ -22,13 +22,17 @@ public class Page {
 	
 	
 	
-	
+	/**
+	 * Purpose: Initializes a page object with its title, page number, and its
+	 * content.
+	 * @param bookName
+	 * @param number
+	 * @param content
+	 */
 	Page (String bookName, int number, String[] content){
 		
-		this.bookName = bookName;
-		
+		this.bookName = bookName;	
 		this.pageNumber = number;
-		
 		this.pageContent = content;
 	}
 	
