@@ -4,15 +4,10 @@
  * Project: Final Project - E-Reader
  * Purpose: This class is the gui view that displays the reader.
  **/
-
-
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -21,11 +16,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -44,12 +37,13 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
+
 public class EReaderView extends Application implements Observer {
 	BorderPane pane;
 	EReaderController controller;
 	VBox headers = new VBox();
-	//ObservableList<Book> books = FXCollections.observableArrayList(
-	//FilteredList<Book> flBooks = new FilteredList(books, p -> true);
+
 	
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -240,9 +234,8 @@ public class EReaderView extends Application implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-		
+
+
 		EReaderModel model = (EReaderModel) o;
 		
 		Page page = (Page) (arg);
@@ -251,9 +244,6 @@ public class EReaderView extends Application implements Observer {
 		BorderPane borderPane = (BorderPane) this.headers.getChildren().get(1);
 		Label label = (Label) borderPane.getChildren().get(0);
 		label.setText(model.getTitle());
-		
-		
-		//System.out.println("Update called with page object" +page.getPageNumber ());
 		
 		
 		try {
@@ -600,13 +590,21 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	
+	/**
+	 * 
+	 * @author korrehenry
+	 * 
+	 * Description: This ChangePageSettings class is a private class
+	 * use to display a Change Page Settings Modal in this
+	 * program.
+	 *
+	 */
 	private class ChangePageSettings extends Stage {
 		
 
 		
 		//private RadioButton human;
 		//private RadioButton computer;
-		
 		//List of Font Types
 		private ChoiceBox<String> dropDownList = new ChoiceBox<String>();
 		private TextField chapter;
@@ -626,13 +624,14 @@ public class EReaderView extends Application implements Observer {
 			Label fontLabel = new Label("Chapter ");
 			Label fontSizeLabel = new Label("Go to Page : ");
 			
-			//List of fonts to choose from
-			this.dropDownList.getItems().add("1");
-			this.dropDownList.getItems().add("2");
-			//this.dropDownList.getItems().add("Other");
+			//
+			for (int i = 1; i < controller.getNumberOfChapters(); i++) {
+				this.dropDownList.getItems().add(String.valueOf(i));
+			}
+
 			
 			//Sets current font to the one that is currently set
-			this.dropDownList.setValue(controller.getFont());
+			//this.dropDownList.setValue(controller.getChapter);
 			
 			
 			this.pageNumber.setPromptText("Type Page Number Here");
@@ -649,7 +648,14 @@ public class EReaderView extends Application implements Observer {
 			ok.setOnAction((e) -> {
 				
 				String pageNumber = this.pageNumber.getText();
-				int pageInt = Integer.valueOf(pageNumber);
+				
+				int pageInt = controller.getPage().getPageNumber();
+				if (!pageNumber.equals("")) {
+					pageInt = Integer.valueOf(pageNumber);
+				}
+				
+				
+				
 				//String chapaterNumber = this.dropDownList.getValue();
 				
 				//Sets New Font Size and Font Type in the model
