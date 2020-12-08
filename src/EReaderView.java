@@ -9,8 +9,6 @@
  * of where the user left off and has navigation buttons to flip the pages.
  **/
 
-
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;

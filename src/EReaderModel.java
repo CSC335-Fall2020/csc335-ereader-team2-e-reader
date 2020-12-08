@@ -10,13 +10,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
 /**
- * @author chelseybergmann, chloed
+ * @author chelseybergmann, chloed, Korre Henry
  * File: EReaderModel.java
- * Project: Project 5 - Connect 4
- * Purpose: This class does the behind the scene work for the e-reader.
+ * Project: Final Project - E-Reader
+ * Purpose: This class does the behind the scene work for the e-reader such as getting
+ * the font, current page, a bookmarked page, a list of all books, the title, and author.
+ * It also has the abilities to change the current page, add a new book, and change
+ * the current book.
  */
-
-
 
 public class EReaderModel extends Observable {
 	

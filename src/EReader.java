@@ -1,5 +1,5 @@
 /**
- * @author chelseybergmann
+ * @author chelseybergmann, chloed, Korre Henry
  * File: EReaderjava
  * Project: Final Project - E-Reader
  * Purpose: This class launches the EReader gui view.

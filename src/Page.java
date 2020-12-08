@@ -1,8 +1,10 @@
 
 
-/** Author: Korre Henry
- * 
- * Description: This class is used to store data related to a specific page.
+/** 
+ *@author Korre Henry, chelseybergmann, chloed
+ * File:  Page.java
+ * Project: Final Project - E-Reader
+ * Purpose: This class is used to store data related to a specific page.
  * In this fashion the a Page class is handled and should always be stored
  * in a Book Object.
  * 
@@ -14,13 +16,12 @@
  * 		Line Content: Information relating to the content of a specific line number.
  * 
  */
+
 public class Page {
 	
 	private int pageNumber;
 	private String bookName;
 	private String [] pageContent;
-	
-	
 	
 	/**
 	 * Purpose: Initializes a page object with its title, page number, and its
@@ -34,30 +35,27 @@ public class Page {
 		this.bookName = bookName;	
 		this.pageNumber = number;
 		this.pageContent = content;
-	}
-	
-	
+	}	
 	
 	/**
 	 * Purpose: Gets the title.
 	 * @return the title as a string
 	 */
-	public String getBookName () {
-		
-		
+	public String getBookName () {	
 		return this.bookName;
 		
 	}
 	
-	
+	/**
+	 * Purpose: get the page's page number.
+	 * @return
+	 */
 	public int getPageNumber () {
-		
-		
-		
 		return this.pageNumber;
 	}
 	
 	/** 
+	 * Purpose: Get the page's lines.
 	 * @returns array list of lines in this page object as a String [] array.
 	 * 
 	 */
@@ -94,8 +92,9 @@ public class Page {
 	}
 	
 	
-	/** @returns All the lines in this Page object as one String delimited by new line characters.
-	 * 
+	/** 
+	 * Purpose: Get all the lines as one string with \n at the end.
+	 * @returns All the lines in this Page object as one String delimited by new line characters.
 	 */
 	public String getContent() {
 		
@@ -107,10 +106,7 @@ public class Page {
 			}
 			
 		}
-		return content;
-		
-		
-		
+		return content;		
 	}
 	
 	
