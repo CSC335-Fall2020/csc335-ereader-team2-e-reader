@@ -1,3 +1,9 @@
+/**
+ * @author chelseybergmann
+ * @author chloed
+ * @author
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -229,10 +235,7 @@ public class Book {
 		//Start building pages
 		int lineCount = 50;
 		buildPages(scanner, lineCount);
-		//Specifies the line count per page, it is set to be 50
-			
-			
-		
+		//Specifies the line count per page, it is set to be 50	
 		
 	}
 	
@@ -311,20 +314,17 @@ public class Book {
 	
 	
 	/**
+	 * Purpose: Gets the number of pages.
 	 * @returns the number of pages this book has.
 	 */
 	 public int getPageCount (){
-	 
 		 return this.pages.size();
 	 }
 	 
-	 
-	
-	
 	/**
-	 * Returns the page object specified by a page number.
+	 * Purpose: Returns the page object specified by a page number.
 	 * 
-	 * @param pageNumber
+	 * @param pageNumber an int representing the page number
 	 * @return a Page Object of associated with that page number
 	 */
 	public Page getPage(int pageNumber ) {
@@ -362,12 +362,13 @@ public class Book {
 			return pageObj.getLine (pageNumber);
 		}
 		
-		//The Page doesn't exist or line count is not in bounds of th page.
+		//The Page doesn't exist or line count is not in bounds of the page.
 		return null;
 	}
 	
 	
 	/**
+	 * Purpose: Gets the pages.
 	 * @return a List of Page Objects contained in this book object
 	 */
 	public List<Page> getPages() {
