@@ -38,7 +38,10 @@ public class Page {
 	
 	
 	
-	
+	/**
+	 * Purpose: Gets the title.
+	 * @return the title as a string
+	 */
 	public String getBookName () {
 		
 		
