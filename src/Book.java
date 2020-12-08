@@ -35,21 +35,36 @@ public class Book {
 		this.currentPageNumber = 1;
 	}
 	
+	/**
+	 * Purpose: Gets the title.
+	 * @return the title
+	 */
 	public String getTitle() {
 		return this.title;
 	}
 	
+	/**
+	 * Purpose: Gets the current page.
+	 * @return page
+	 */
 	public Page getCurrentPage() {
 		
 		return this.pageMap.get (this.currentPageNumber);
 	}
 	
-	//Sets Book Marked Page
+	/**
+	 * Purpose: Sets Book Marked Page to the passed in page number.
+	 * @param number
+	 */
 	public void bookMarkPage(int number) {
 		
 		this.bookMarkedPage = number;
 	}
 	
+	/**
+	 * Purpose: get the book marked page.
+	 * @return page
+	 */
 	public Page getbookMarkedPage() {
 		
 		if (this.bookMarkedPage != -1) {
@@ -60,6 +75,10 @@ public class Book {
 		
 	}
 	
+	/**
+	 * Purpose: Set the current page for display.
+	 * @param number the page number
+	 */
 	private void setCurrentPage(int number) {
 		
 		//If Page count is in bounds
@@ -71,6 +90,10 @@ public class Book {
 
 	}
 	
+	/**
+	 * Purpose: Get the author.
+	 * @return string
+	 */
 	public String getAuthor() {
 		return this.author;
 	}
@@ -97,7 +120,9 @@ public class Book {
 				
 			}
 			
-			if (this.title != null && this.author != null && curr.startsWith("***")) {
+			// When title and author are known, start reading.
+			if (this.title != null && this.author != null && scanner.nextLine().length() > 0) { // && curr.startsWith("***") 
+                                          
 				break;
 			}
 		}

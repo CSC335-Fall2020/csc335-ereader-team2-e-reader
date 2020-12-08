@@ -93,7 +93,7 @@ public class EReaderView extends Application implements Observer {
 		heading.setAlignment(Pos.CENTER);
 		
 		titleHeader.setTop(heading);
-		BorderPane.setAlignment(heading, Pos.CENTER);	
+		this.pane.setAlignment(heading, Pos.CENTER);	
 	}
 	
 	/**
