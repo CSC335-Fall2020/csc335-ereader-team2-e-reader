@@ -5,14 +5,10 @@
  * Purpose: This class is the gui view that displays the reader.
  **/
 
-
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -21,11 +17,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -44,12 +38,13 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
+
 public class EReaderView extends Application implements Observer {
 	BorderPane pane;
 	EReaderController controller;
 	VBox headers = new VBox();
-	//ObservableList<Book> books = FXCollections.observableArrayList(
-	//FilteredList<Book> flBooks = new FilteredList(books, p -> true);
+
 	
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -240,9 +235,8 @@ public class EReaderView extends Application implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-		
+
+
 		EReaderModel model = (EReaderModel) o;
 		
 		Page page = (Page) (arg);
@@ -251,9 +245,6 @@ public class EReaderView extends Application implements Observer {
 		BorderPane borderPane = (BorderPane) this.headers.getChildren().get(1);
 		Label label = (Label) borderPane.getChildren().get(0);
 		label.setText(model.getTitle());
-		
-		
-		//System.out.println("Update called with page object" +page.getPageNumber ());
 		
 		
 		try {
