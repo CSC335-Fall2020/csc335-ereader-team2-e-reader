@@ -11,10 +11,8 @@
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -23,11 +21,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -45,6 +41,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+
 
 public class EReaderView extends Application implements Observer {
 	BorderPane pane;
@@ -204,12 +202,21 @@ public class EReaderView extends Application implements Observer {
 			
 		});
 		
+		MenuItem changePageButton = new MenuItem ("Change Page");
+		changePageButton.setOnAction (e ->{
+			ChangePageSettings settings = new ChangePageSettings();
+			settings.showAndWait();
+			
+		});
+		
+		
+		
 		MenuItem bookMarkButton = new MenuItem ("Bookmark Page");
 		bookMarkButton.setOnAction (e ->{
 			this.controller.bookmarkPage (this.controller.getPage().getPageNumber());			
 		});
 		
-		fileMenuBox.getItems().addAll(newBookButton, bookMarkButton);
+		fileMenuBox.getItems().addAll(newBookButton, changePageButton, bookMarkButton);
 		
 		//For File Menu
 		MenuBar fileMenuBar = new MenuBar (fileMenuBox);
@@ -244,14 +251,15 @@ public class EReaderView extends Application implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		EReaderModel model = (EReaderModel) o;	
+		EReaderModel model = (EReaderModel) o;
+		
 		Page page = (Page) (arg);
 		
 		//Accesses the Title Header
 		BorderPane borderPane = (BorderPane) this.headers.getChildren().get(1);
 		Label label = (Label) borderPane.getChildren().get(0);
 		label.setText(model.getTitle());
-		
+
 		try {
 			//Re Renders a save stated page
 			displayPage(page);
@@ -279,6 +287,13 @@ public class EReaderView extends Application implements Observer {
 		
 		
 		private TextField searchBar = new TextField("");
+		
+		private Label currentBook = new Label ("Current Book : "+controller.getBook().getTitle());
+		private Label currentBookProg = new Label ("Progress : "+ controller.getPage().getPageNumber()
+				+" of "+controller.getBook().getPages().size()+" Pages ");
+		
+		private Label selectedBook = new Label ("Selected Book : ");
+		private Label selectedBookProg = new Label ("Progress :");
 		private String chosenBook;
 		
 		//Table view of books
@@ -289,6 +304,7 @@ public class EReaderView extends Application implements Observer {
 			
 			HBox properties = new HBox();
 			HBox buttons = new HBox();
+			VBox rightList = new VBox();
 			VBox list = new VBox();
 			initModality(Modality.APPLICATION_MODAL);
 
@@ -340,7 +356,10 @@ public class EReaderView extends Application implements Observer {
 	        
 			
 			properties.getChildren().addAll(bookList, this.searchByList, this.searchBar);
-			properties.setPadding(new Insets(10, 0, 10, 0));
+			properties.setPadding(new Insets(10, 0, 30, 0));
+			
+			rightList.getChildren().addAll(this.currentBook, this.currentBookProg, properties,   this.selectedBook, this.selectedBookProg );
+			rightList.setPadding(new Insets(10, 10, 100, 20));
 			
 			Button ok = new Button("OK");
 			Button cancel = new Button("Cancel");
@@ -372,7 +391,7 @@ public class EReaderView extends Application implements Observer {
 			
 			buttons.getChildren().addAll(ok, cancel);
 			
-			list.getChildren().addAll(properties);
+			list.getChildren().addAll(rightList);
 			
 			BorderPane b = new BorderPane();
 			b.setCenter(list);
@@ -380,7 +399,7 @@ public class EReaderView extends Application implements Observer {
 			
 			VBox vbox = new VBox();
 	        vbox.setSpacing(5);
-	        vbox.setPadding(new Insets(10, 0, 0, 10));
+	        vbox.setPadding(new Insets(10, 10, 10, 10));
 	        vbox.getChildren().addAll( this.bookViewTable);
 	        b.setLeft(vbox);
 
@@ -401,7 +420,19 @@ public class EReaderView extends Application implements Observer {
 		{
 			//Changes Book to new Reference
 			this.chosenBook = this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle();
-		    System.out.println(this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle());
+	
+			this.selectedBook.setText ("Selected Book : "+
+			this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle());
+			
+			Book newBook = controller.getBook
+					(this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle());
+			if (newBook != null) {
+				this.selectedBookProg.setText("Progress : "+ 
+			newBook.getbookMarkedPage().getPageNumber() +" of "+newBook.getPages().size() +"Pages ");
+			}
+
+		    
+			System.out.println(this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle());
 		    System.out.println(this.bookViewTable.getSelectionModel().getSelectedItem().getBookAuthor());
 		    //System.out.println(tableID.getSelectionModel().getSelectedItem().getCountry());
 		    
@@ -546,7 +577,132 @@ public class EReaderView extends Application implements Observer {
 			
 			setScene(s);
 			setTitle("Reading View Settings");
-			
 		}	
 	}	
+		}
+		
+		
+		public int getFontSize() {
+			
+			return Integer.parseInt (this.fontSize.getText());
+		}
+		
+		public String getFont() {
+			
+			return this.dropDownList.getValue();
+		}
+		
+
+		
+	}
+	
+	
+	/**
+	 * 
+	 * @author korrehenry
+	 * 
+	 * Description: This ChangePageSettings class is a private class
+	 * use to display a Change Page Settings Modal in this
+	 * program.
+	 *
+	 */
+	private class ChangePageSettings extends Stage {
+		
+
+		
+		//private RadioButton human;
+		//private RadioButton computer;
+		//List of Font Types
+		private ChoiceBox<String> dropDownList = new ChoiceBox<String>();
+		private TextField chapter;
+		private TextField pageNumber = new TextField("");
+
+
+		
+		public ChangePageSettings() {
+			
+			HBox properties = new HBox();
+			HBox buttons = new HBox();
+			VBox list = new VBox();
+			initModality(Modality.APPLICATION_MODAL);
+
+			System.out.println("I was called to help!");
+			
+			Label fontLabel = new Label("Chapter ");
+			Label fontSizeLabel = new Label("Go to Page : ");
+			
+			//
+			for (int i = 1; i < controller.getNumberOfChapters(); i++) {
+				this.dropDownList.getItems().add(String.valueOf(i));
+			}
+
+			
+			//Sets current font to the one that is currently set
+			//this.dropDownList.setValue(controller.getChapter);
+			
+			
+			this.pageNumber.setPromptText("Type Page Number Here");
+			//this.fontSize = new TextField(String.valueOf(controller.getFontSize()));
+			
+			properties.getChildren().addAll(fontLabel, this.dropDownList, fontSizeLabel,
+					this.pageNumber);
+			properties.setPadding(new Insets(10, 10, 10, 10));
+			properties.setSpacing(15);
+			
+			Button ok = new Button("OK");
+			Button cancel = new Button("Cancel");
+			
+			ok.setOnAction((e) -> {
+				
+				String pageNumber = this.pageNumber.getText();
+				
+				int pageInt = controller.getPage().getPageNumber();
+				if (!pageNumber.equals("")) {
+					pageInt = Integer.valueOf(pageNumber);
+				}
+				
+				
+				
+				//String chapaterNumber = this.dropDownList.getValue();
+				
+				//Sets New Font Size and Font Type in the model
+				controller.goToPage (pageInt);
+				//controller.setFontSize(fontSizeInt);
+				
+				//Passes in current page
+				try {
+					displayPage(controller.getPage());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				hide();
+
+				
+			});
+			
+			cancel.setOnAction( (event) -> {
+				//Leaves wasCanceled boolean to off.
+				hide();
+				
+			});
+			buttons.getChildren().addAll(ok, cancel);
+			
+			list.getChildren().addAll(properties);
+			
+			BorderPane b = new BorderPane();
+			b.setCenter(list);
+			b.setBottom(buttons);
+			
+			Scene s = new Scene(b, 600, 150);
+			
+			setScene(s);
+			setTitle("Change Page Settings");
+			
+		}
+		
+
+		
+	}
 }
