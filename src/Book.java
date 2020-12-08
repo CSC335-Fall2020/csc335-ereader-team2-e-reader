@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * @author Korre D. Henry, chloe, chelsey
  * COURSE: CSC 335; Fall 2020
- * Assignment: Project 3
+ * Assignment: Team 2 - E-Reader Project
  * 
  * Purpose: This Book Class is used to hold Page objects such that each page object carries
  * 			information about the content contained on a given page of some E-Book. This book
