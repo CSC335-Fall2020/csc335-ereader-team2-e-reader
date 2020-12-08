@@ -1,5 +1,6 @@
 /**
- * @author chelseybergmann, chloed
+ * @author chelseybergmann
+ * @author chloed
  * File: EReaderView.java
  * Project: Final Project - E-Reader
  * Purpose: This class is the gui view that displays the reader.
@@ -96,6 +97,12 @@ public class EReaderView extends Application implements Observer {
 		
 	}
 	
+	
+	/**
+	 * Purpose: Displays the current page and its options.
+	 * @param page the page from book to display.
+	 * @throws FileNotFoundException
+	 */
 	protected void displayPage(Page page) throws FileNotFoundException {
 		// get the list of pages
 		Label currPage = new Label();
@@ -147,7 +154,7 @@ public class EReaderView extends Application implements Observer {
         imageView2.setFitHeight( 20);
         imageView2.setFitWidth( 20);
         
-		Button prevPageButton = new Button("Next Page", imageView2);
+		Button prevPageButton = new Button("Prev Page", imageView2);
 		
 		
 		prevPageButton.setOnAction( event -> {
