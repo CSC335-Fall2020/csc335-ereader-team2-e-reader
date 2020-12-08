@@ -1,9 +1,5 @@
-import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Set;
-
 /**
- * @author Korre D. Henry, chloe, chelsey
+ * @author Korre D. Henry, chelseybergmann, chloed
  * COURSE: CSC 335; Fall 2020
  * Assignment:  Team 2 - E-Reader Project
  * 
@@ -33,6 +29,10 @@ import java.util.Set;
  * 				construction.
  * 
  */
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Set;
+
 public class EReaderController {
 	EReaderModel model;
 	
@@ -64,8 +64,9 @@ public class EReaderController {
 		
 	}
 	
-	/** 
-	 * 
+
+	/**
+	 * Purpose: Gets the selected or default font. 
 	 * @return the string value of the font 
 	 * type that this model is currently broadcasting.
 	 */
@@ -75,6 +76,7 @@ public class EReaderController {
 	}
 	
 	/**
+	 * Purpose: Gets the font size.
 	 *
 	 * @return the integer value of the font size 
 	 */
@@ -94,7 +96,7 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the bookmarked page. 
 	 * @return the Page object the current Book Object being 
 	 * viewed's book marked page if the currently viewed Book Object
 	 * has a book marked page set.
@@ -115,7 +117,7 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the current book. 
 	 * @return the Page Object that is currently being 
 	 * viewed by this model object.
 	 */
@@ -125,7 +127,7 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the current page.
 	 * @param number given a number as an integer value,
 	 * 
 	 * @return that Page object that contains the beginning of the 
@@ -173,7 +175,7 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the current book's pages.
 	 * @return List of Page objects that are contained in the Book
 	 * object that this model is currently broadcasting as the current Book
 	 * being viewed.
@@ -183,7 +185,7 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the author.
 	 * @return current Book Author being observed
 	 */
 	public String getAuthor() {
@@ -192,7 +194,8 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
+	 * Purpose: Gets the title.
+	 * @return the title
 	 * @return String value of current book title being observed
 	 */
 	public String getTitle() {
@@ -201,7 +204,6 @@ public class EReaderController {
 	}
 	
 	/**
-	 * 
 	 * @purpose: Changes model current page page state to the given page number
 	 * 
 	 * @param pageNumber, some integer value of a page number in the 
@@ -242,6 +244,7 @@ public class EReaderController {
 	}
 	
 	/**
+	 * Purpose: Returns a set of titles of books in the model object
 	 * 
 	 * @return a set of titles of books in the model object
 	 */
@@ -251,6 +254,7 @@ public class EReaderController {
 	}
 	
 	/**
+	 * Purpose: Return the list of book objects that this model holds
 	 * @return the List object of Book objects that t
 	 * his program's model holds
 	 */

@@ -8,6 +8,7 @@
  * and font size, and has the ability to search by title name or author.  It keeps track
  * of where the user left off and has navigation buttons to flip the pages.
  **/
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Observable;
