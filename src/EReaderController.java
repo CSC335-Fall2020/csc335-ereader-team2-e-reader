@@ -18,7 +18,7 @@ public class EReaderController {
 	}
 	
 	/**
-	 * Purpose: Bookmarks a page.
+	 * Purpose: Bookmarks a page in the current book.
 	 * @param number the page number
 	 */
 	public void bookmarkPage (int number) {
