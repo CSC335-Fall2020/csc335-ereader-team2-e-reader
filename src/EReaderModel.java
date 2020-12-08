@@ -14,8 +14,10 @@ import javafx.scene.text.Font;
  * COURSE: CSC 335; Fall 2020
  * Assignment:  Team 2 - E-Reader Project
  * 
- * Purpose: This EReaderModel Class is used to hold Book objects where each
- * 			Book object pertains to a specific E-Book that has been added to
+ * Purpose: This EReaderModel Class is the Model that is used in this 
+ * 			program's MVC structure. This EReaderModel Class is 
+ * 			used to hold Book objects where each Book object 
+ * 			pertains to a specific E-Book that has been added to
  * 			this model object instance.
  * 
  * Description: This EReaderModel Class will be able to do the following:
@@ -155,7 +157,8 @@ public class EReaderModel extends Observable {
 	 * book marked page if the given number is a valid page number
 	 * in the Book Object.
 	 * 
-	 * @param number
+	 * @param number, integer value of some number that will be
+	 * the book marked page.
 	 */
 	public void bookmarkPage(int number ) {
 	
@@ -252,6 +255,18 @@ public class EReaderModel extends Observable {
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @purpose: Changes to the page number that is given
+	 * as pageNunber* .
+	 * 
+	 * @param pageNumber, integer value of some page number 
+	 * in the Book object that is currently being broadcasted in 
+	 * this model instance.
+	 * 
+	 * @return True if the page number was succesfually 
+	 * turned to and is in bounds, false if not.
+	 */
 	public boolean changePage(int pageNumber) {
 		
 		Page pageObj = this.currBook.getPage (pageNumber);
