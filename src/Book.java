@@ -5,7 +5,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author Korre D. Henry, chloe, chelsey
+ * COURSE: CSC 335; Fall 2020
+ * Assignment: Project 3
+ * 
+ * Purpose: This Book Class is used to hold Page objects such that each page object carries
+ * 			information about the content contained on a given page of some E-Book. This book
+ * 			Class will be used as a container for the Pages of the Book (representation of some 
+ * 			E-Book). This Book class will will be used to fetch information about content located
+ * 			on a page, number of pages contained in the book, the chapters in the book,the
+ * 			author's name & the title of the book.
+ * 
+ * Description: This Book Class  will be able to do the following:
+ * 				
+ * 				Provide Data related to a specific page as a Page Object
+ * 
+ * 				Provide the number of pages contained in the E-Book read in.
+ * 				
+ * 				Provide the Title & Author of the E-Book.
+ * 
+ * 				Provide Chapter data contained to the E-Book.		
+ * 
+ * 
+ */
 public class Book {
+	
 	private String title;
 	private String author;
 	private int currentPageNumber;
@@ -19,6 +44,15 @@ public class Book {
 	
 	HashMap<Integer, Page> chapterMap = new HashMap <Integer, Page>();
 	
+	/**
+	 * @purpose: constructs a new Book Object instance 
+	 * passing in the the filename associated with the E-Book
+	 * that this Book Object will hold.
+	 * 
+	 * @param fileName, the file name associated with the E-Book file that
+	 * this Book Object will hold.
+	 * @throws FileNotFoundException
+	 */
 	public Book(String fileName) throws FileNotFoundException {
 		this.pages = new ArrayList<Page>();
 		System.out.print ("Book being made with " + fileName);
@@ -28,20 +62,55 @@ public class Book {
 		this.currentPageNumber = 1;
 	}
 	
+	/**
+	 * @purpose: Returns the the title of the E-Book
+	 * that this Book object holds.
+	 * 
+	 * @return String value relating to the title of 
+	 * the E-Book that this Book object holds.
+	 */
 	public String getTitle() {
 		return this.title;
 	}
 	
+	/**
+	 * @purpose: Returns a Page object containing metadata
+	 * about the current Page being viewed in this book object.
+	 * 
+	 * @return returns a Page object containing metadata
+	 * about the current Page being viewed in this book object.
+	 * 
+	 * The currenPageNumber attribute is updated as the reader 
+	 * requests to view a different page.
+	 */
 	public Page getCurrentPage() {
 		
 		return this.pageMap.get (this.currentPageNumber);
 	}
 	
+	/**
+	 * @purpose: Returns the chapter number of the E-Book
+	 * that is currently being viewed.
+	 * 
+	 * 
+	 * @return: the chapter number of the E-Book
+	 * that is currently being viewed.
+	 */
 	public int getCurrentChapter() {
 		
 		return this.chapterNumber;
 	}
 	
+	/**
+	 * 
+	 * @purpose: Returns the Page Object that contains the content
+	 * related to beginning of a specified chapter.
+	 * 
+	 * @param number, some chapter number of integer value
+	 * @return the Page Object that contains the content
+	 * related to beginning of a specified chapter.
+	 * 
+	 */
 	public Page getChapter (int number) {
 		
 		if (this.chapterMap.containsKey(number)) {
@@ -53,16 +122,38 @@ public class Book {
 		
 	}
 	
+	/**
+	 * 
+	 * @purpose: Returns the integer value of the number of total chapters contained
+	 * in this Book Object.
+	 * 
+	 * @return the integer value of the number of total chapters contained
+	 * in this Book Object.
+	 */
 	public int getNumberOfChapters() {
 		return this.chapterMap.size();
 	}
 	
-	//Sets Book Marked Page
+	/**
+	 * 
+	 * @purpose: Sets the this book's book marked page to be
+	 * the page object with the is hashed to when given some integer
+	 * value.
+	 * 
+	 */
 	public void bookMarkPage(int number) {
 		
 		this.bookMarkedPage = number;
 	}
 	
+	/**
+	 * 
+	 * @purpose: Returns the most recently book marked 
+	 * page object in this Book Object.
+	 * 
+	 * @return the Page Object that maps to the the specified 
+	 * book marked page if one has been established.
+	 */
 	public Page getbookMarkedPage() {
 		
 		if (this.bookMarkedPage != -1) {
@@ -73,6 +164,15 @@ public class Book {
 		
 	}
 	
+	/**
+	 * 
+	 * @purpose: Changes the page to the given number (integer)
+	 * value. The page number that is given will be the current
+	 * page that this Book will allow to be viewed.
+	 * 
+	 * @param number, integer value of the page number that
+	 * is being requested for this Book object to change to.
+	 */
 	private void setCurrentPage(int number) {
 		
 		//If Page count is in bounds
@@ -85,10 +185,25 @@ public class Book {
 
 	}
 	
+	/**
+	 * @returns a String Object containing the author's name 
+	 * of the E-Book that was read in.
+	 */
 	public String getAuthor() {
 		return this.author;
 	}
 	
+	/**
+	 * 
+	 * @purpose: Given a file name associated with an E-Book; reads in
+	 * the E-Book file and stores data/meta about the E-Book in this 
+	 * Book Object.
+	 * 
+	 * @param fileName: the file name associated with the E-Book file that
+	 * this Book Object will hold.
+	 * 
+	 * @throws FileNotFoundException
+	 */
 	private void read(String fileName) throws FileNotFoundException {
 		File file = new File(fileName);
 		Scanner scanner = new Scanner(file);
