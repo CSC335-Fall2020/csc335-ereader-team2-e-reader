@@ -38,6 +38,8 @@ public class EReaderController {
 	
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Constructs a EReaderController object instance,
 	 * and adds a reference to the EReaderModel 
 	 * model object that is passed in. 
@@ -51,6 +53,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Bookmarks the page associated with the given
 	 * page number; number* as the current book being viewed's
 	 * book marked page if the given number is a valid page number
@@ -66,6 +70,8 @@ public class EReaderController {
 	
 
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the selected or default font. 
 	 * @return the string value of the font 
 	 * type that this model is currently broadcasting.
@@ -76,6 +82,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the font size.
 	 *
 	 * @return the integer value of the font size 
@@ -85,6 +93,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose Sets a new font type for this
 	 * model object to broadcast as the passed in 
 	 * string value, font* .
@@ -96,6 +106,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the bookmarked page. 
 	 * @return the Page object the current Book Object being 
 	 * viewed's book marked page if the currently viewed Book Object
@@ -106,6 +118,8 @@ public class EReaderController {
 	}
 
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Sets the font size to the given number 
 	 * size* that is passed in. 
 	 * 
@@ -117,6 +131,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the current book. 
 	 * @return the Page Object that is currently being 
 	 * viewed by this model object.
@@ -127,6 +143,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the current page.
 	 * @param number given a number as an integer value,
 	 * 
@@ -139,6 +157,7 @@ public class EReaderController {
 	
 	
 	/**
+	 * @author korrehenry
 	 * 
 	 * @return the integer value of all the chapters in the
 	 * Book Object reference that's currently being viewed.
@@ -148,6 +167,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Returns a Book Object associated with the given title name.
 	 * 
 	 * @param: title, a string value of the the title of some Book Object
@@ -162,6 +183,8 @@ public class EReaderController {
 	
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Bookmarks the page associated with the given
 	 * page number; number* as the current book being viewed's
 	 * book marked page if the given number is a valid page number
@@ -175,6 +198,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the current book's pages.
 	 * @return List of Page objects that are contained in the Book
 	 * object that this model is currently broadcasting as the current Book
@@ -185,6 +210,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the author.
 	 * @return current Book Author being observed
 	 */
@@ -194,6 +221,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the title.
 	 * @return the title
 	 * @return String value of current book title being observed
@@ -204,6 +233,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Changes model current page page state to the given page number
 	 * 
 	 * @param pageNumber, some integer value of a page number in the 
@@ -218,6 +249,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose Changes model state to go to a different book;
 	 * 
 	 * @param title, the string title of some Book object
@@ -229,6 +262,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Adds a new Book Object to this controller object's
 	 * model.
 	 *  
@@ -244,6 +279,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Returns a set of titles of books in the model object
 	 * 
 	 * @return a set of titles of books in the model object
@@ -254,6 +291,8 @@ public class EReaderController {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Return the list of book objects that this model holds
 	 * @return the List object of Book objects that t
 	 * his program's model holds

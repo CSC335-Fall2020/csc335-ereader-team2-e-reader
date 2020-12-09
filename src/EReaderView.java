@@ -188,6 +188,8 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Displays the File and View settings along with inner settings such as
 	 * New Book, Bookmark Page, and a font type and size changer. 
 	 */
@@ -245,6 +247,9 @@ public class EReaderView extends Application implements Observer {
 	
 	
 	/**
+	 * 
+	 * @author korrehenry
+	 * 
 	 * Purpose: Updates the e-reader view.
 	 * @param o the observable class
 	 * @param arg the object to update the display with
@@ -270,6 +275,8 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Displays the settings for the curr book be to searched by
 	 * title or author and the list of books as a filtered list.
 	 */
@@ -496,6 +503,8 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Allows the user to change the font and size of the reading.
 	 */
 	private class ReadingViewSettings extends Stage {
@@ -578,8 +587,8 @@ public class EReaderView extends Application implements Observer {
 			setScene(s);
 			setTitle("Reading View Settings");
 		}	
-	}	
-		}
+	
+		
 		
 		
 		public int getFontSize() {

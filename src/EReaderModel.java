@@ -49,6 +49,8 @@ public class EReaderModel extends Observable {
 	private HashMap<String, Book> bookMap = new HashMap<String, Book>();
 
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Constructs a EReaderModel object instance,
 	 * with all null attributes relating to the current book
 	 * being viewed as "currBook", the current page being viewed as
@@ -77,6 +79,7 @@ public class EReaderModel extends Observable {
 	}
 
 	/**
+	 * @author korrehenry
 	 * Purpose: Returns the Font size
 	 * @return an int
 	 * @return the integer value of the font size 
@@ -86,6 +89,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose Sets a new font type for this
 	 * model object to broadcast as the passed in 
 	 * string value, font* .
@@ -100,6 +105,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Sets the font size to the given number 
 	 * size* that is passed in. 
 	 * 
@@ -111,6 +118,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
 	 * Purpose: Gets the current page, a page object.
 	 * @return the Page Object that is currently being 
 	 * viewed by this model object.
@@ -121,6 +129,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose:  Gets the bookmarked page. 
 	 * @param number given a number as an integer value,
 	 * 
@@ -133,6 +143,7 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
 	 * 
 	 * @return the integer value of all the chapters in the
 	 * Book Object reference that's currently being viewed.
@@ -143,6 +154,7 @@ public class EReaderModel extends Observable {
 	
 	
 	/**
+	 * @author korrehenry
 	 * 
 	 * @return the Page object the current Book Object being 
 	 * viewed's book marked page if the currently viewed Book Object
@@ -154,6 +166,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Bookmarks the page associated with the given
 	 * page number; number* as the current book being viewed's
 	 * book marked page if the given number is a valid page number
@@ -168,6 +182,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the current book. 
 	 * @return the Book Object that this model is currently holding
 	 * or broadcasting as the E-Book being viewed.
@@ -177,6 +193,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the pages of the current book.
 	 * @return List of Page objects that are contained in the Book
 	 * object that this model is currently broadcasting as the current Book
@@ -189,6 +207,8 @@ public class EReaderModel extends Observable {
 	
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: gets the author.
 	 * @return current Book Author being observed
 	 */
@@ -199,6 +219,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the title. 
 	 * @return String value of current book title being observed
 	 */
@@ -207,6 +229,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: gets the book list.
 	 * @return List Object of books, List of book objects
 	 */
@@ -216,6 +240,8 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the title of all books.
 	 * @return Set of String objects representing the titles 
 	 * of all the books contained in this model object.
@@ -228,6 +254,9 @@ public class EReaderModel extends Observable {
 	
 
 	/**
+	 * 
+	 * @author korrehenry
+	 * 
 	 * @purpose: Given a book title, changes the currBook being observed to 
 	 * the new book title given.
 	 * 
@@ -258,6 +287,9 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * 
+	 * @author korrehenry
+	 * 
 	 * @purpose: Changes to the page number that is given
 	 * as pageNunber* .
 	 * 
@@ -290,6 +322,9 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * 
+	 * @author korrehenry
+	 * 
 	 * @purpose: Returns a Book Object associated with the given title name.
 	 * 
 	 * @param: title, a string value of the the title of some Book Object
@@ -307,6 +342,9 @@ public class EReaderModel extends Observable {
 	}
 	
 	/**
+	 * 
+	 * @author korrehenry
+	 * 
 	 * @purpose: Adds a new Book Object to this model.
 	 *  
 	 * @param fileName, string value of the file name that holds

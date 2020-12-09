@@ -94,6 +94,9 @@ public class Book {
 	}
 	
 	/**
+	 * 
+	 * @author korrehenry
+	 * 
 	 * @purpose: Returns a Page object containing metadata
 	 * about the current Page being viewed in this book object.
 	 * 
@@ -108,7 +111,9 @@ public class Book {
 		return this.pageMap.get (this.currentPageNumber);
 	}
 	
-	/**r
+	/**
+	 * @author korrehenry
+	 * 
 	 * @purpose: Returns the chapter number of the E-Book
 	 * that is currently being viewed.
 	 * 
@@ -335,6 +340,8 @@ public class Book {
 	
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Gets the number of pages.
 	 * @returns the number of pages this book has.
 	 */
@@ -343,6 +350,8 @@ public class Book {
 	 }
 	 
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Returns the page object specified by a page number.
 	 * 
 	 * @param pageNumber an int representing the page number
@@ -362,6 +371,8 @@ public class Book {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * When given a Page number and a lineNumber returns a 
 	 * String line of the content that is on given page number,
 	 * 
