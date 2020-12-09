@@ -113,6 +113,8 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Shows the page's options such as its page number and prev and next buttons.
 	 * @param page the current page disolayed
 	 * @throws FileNotFoundException
@@ -645,9 +647,7 @@ public class EReaderView extends Application implements Observer {
 				this.dropDownList.getItems().add(String.valueOf(i));
 			}
 
-			
-			//Sets current font to the one that is currently set
-			//this.dropDownList.setValue(controller.getChapter);
+
 			
 			
 			this.pageNumber.setPromptText("Type Page Number Here");
