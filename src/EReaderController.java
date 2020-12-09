@@ -1,5 +1,5 @@
 /**
- * @author Korre D. Henry, chelseybergmann, chloed
+ * @author Korre D. Henry, chelseybergmann
  * COURSE: CSC 335; Fall 2020
  * Assignment:  Team 2 - E-Reader Project
  * 

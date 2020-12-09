@@ -43,12 +43,24 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-
+/**
+ * 
+ * @author chelseybergmann, chloed, Korre Henry
+ *
+ * Purpose: This class is the gui view that displays the reader.  It starts out with
+ * a book on page one with book and single page options.  The user can add a new book,
+ * change the current book from a selection of books, bookmark a page, change the font
+ * and font size, and has the ability to search by title name or author.  It keeps track
+ * of where the user left off and has navigation buttons to flip the pages.
+ */
 public class EReaderView extends Application implements Observer {
 	BorderPane pane;
 	EReaderController controller;
 	VBox headers = new VBox();
 	
+	/**
+	 * Purpose: Creates all features for the E-Reader GUI Program.
+	 */
 	@Override
 	public void start(Stage stage) throws Exception {
 		this.pane = new BorderPane();
@@ -63,6 +75,9 @@ public class EReaderView extends Application implements Observer {
 		// Adds book to the model
 		this.controller.addBook ("Books/salembelle.txt");
 		this.controller.addBook ("Books/starship.txt");
+		this.controller.addBook ("Books/TheWar.txt");
+		this.controller.addBook ("Books/TheBigApple.txt");
+		this.controller.addBook ("Books/Jack&Jill.txt");
 		Page page = this.controller.getPage ();
 
 		// Displays a page with a given font size
@@ -113,6 +128,8 @@ public class EReaderView extends Application implements Observer {
 	}
 	
 	/**
+	 * @author korrehenry
+	 * 
 	 * Purpose: Shows the page's options such as its page number and prev and next buttons.
 	 * @param page the current page disolayed
 	 * @throws FileNotFoundException
@@ -286,8 +303,7 @@ public class EReaderView extends Application implements Observer {
 		private ChoiceBox<String> searchByList = new ChoiceBox<String>();
 		
 		//FX Collections of Book List
-		ObservableList<BookView> booksList = FXCollections.observableArrayList(
-				new BookView ("Catherine Hathaway", "Beauty"));
+		ObservableList<BookView> booksList = FXCollections.observableArrayList();
 		
 		//Filtered Book List
 		FilteredList<BookView> flBooks = new FilteredList<BookView>(this.booksList, p -> true);
@@ -435,13 +451,13 @@ public class EReaderView extends Application implements Observer {
 					(this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle());
 			if (newBook != null) {
 				this.selectedBookProg.setText("Progress : "+ 
-			newBook.getbookMarkedPage().getPageNumber() +" of "+newBook.getPages().size() +"Pages ");
+			newBook.getbookMarkedPage().getPageNumber() +" of "+newBook.getPages().size() +" Pages ");
 			}
 
 		    
 			System.out.println(this.bookViewTable.getSelectionModel().getSelectedItem().getBookTitle());
 		    System.out.println(this.bookViewTable.getSelectionModel().getSelectedItem().getBookAuthor());
-		    //System.out.println(tableID.getSelectionModel().getSelectedItem().getCountry());
+
 		    
 		}
 
@@ -462,7 +478,7 @@ public class EReaderView extends Application implements Observer {
 				this.booksList.add(bookView);
 			}
 		}
-		
+		 
 		/**
 		 * Purpose: Displays the current book's title and author.
 		 */
@@ -618,9 +634,6 @@ public class EReaderView extends Application implements Observer {
 	private class ChangePageSettings extends Stage {
 		
 
-		
-		//private RadioButton human;
-		//private RadioButton computer;
 		//List of Font Types
 		private ChoiceBox<String> dropDownList = new ChoiceBox<String>();
 		private TextField chapter;
@@ -635,7 +648,7 @@ public class EReaderView extends Application implements Observer {
 			VBox list = new VBox();
 			initModality(Modality.APPLICATION_MODAL);
 
-			System.out.println("I was called to help!");
+
 			
 			Label fontLabel = new Label("Chapter ");
 			Label fontSizeLabel = new Label("Go to Page : ");
@@ -645,13 +658,11 @@ public class EReaderView extends Application implements Observer {
 				this.dropDownList.getItems().add(String.valueOf(i));
 			}
 
-			
-			//Sets current font to the one that is currently set
-			//this.dropDownList.setValue(controller.getChapter);
+
 			
 			
 			this.pageNumber.setPromptText("Type Page Number Here");
-			//this.fontSize = new TextField(String.valueOf(controller.getFontSize()));
+
 			
 			properties.getChildren().addAll(fontLabel, this.dropDownList, fontSizeLabel,
 					this.pageNumber);
@@ -672,12 +683,11 @@ public class EReaderView extends Application implements Observer {
 				
 				
 				
-				//String chapaterNumber = this.dropDownList.getValue();
+
 				
 				//Sets New Font Size and Font Type in the model
 				controller.goToPage (pageInt);
-				//controller.setFontSize(fontSizeInt);
-				
+
 				//Passes in current page
 				try {
 					displayPage(controller.getPage());

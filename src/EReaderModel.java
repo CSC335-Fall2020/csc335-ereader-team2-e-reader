@@ -5,12 +5,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Font;
 
 /**
- * @author Korre D. Henry, chloe, chelsey
+ * @author Korre D. Henry
  * COURSE: CSC 335; Fall 2020
  * Assignment:  Team 2 - E-Reader Project
  * 
