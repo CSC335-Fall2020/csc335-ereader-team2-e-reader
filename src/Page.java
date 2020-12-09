@@ -2,7 +2,7 @@
 /** 
  *@author Korre Henry
  * File:  Page.java
- * Project: Final Project - E-Reader
+ * Project: Team 2 - E-Reader Project
  * Purpose: This class is used to store data related to a specific page.
  *
  * In this fashion the a Page class is handled and should always be stored
@@ -93,7 +93,8 @@ public class Page {
 	 * 
 	 * Accepts real numbers from 1 - 1,000.
 	 * 
-	 * @param lineNumber
+	 * @param lineNumber, an intger value of the specific line of 
+	 * requested to be extracted from this page of content
 	 * @return
 	 */
 	public String getLine ( int lineNumber) {

@@ -1,13 +1,3 @@
-/**
- * @author chelseybergmann, chloed, Korre Henry
- * File: Book.java
- * Project: Final Project - E-Reader
- * Purpose: This class does the behind the scene work for the e-reader such as getting
- * the font, current page, a bookmarked page, a list of all books, the title, and author.
- * It also has the abilities to change the current page, add a new book, and change
- * the current book.
- */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -16,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @author Korre D. Henry, chloe, chelsey
+ * @author Korre D. Henry,  chelsey 
  * COURSE: CSC 335; Fall 2020
  * Assignment: Team 2 - E-Reader Project
  * 
@@ -168,7 +158,10 @@ public class Book {
 	 */
 	public void bookMarkPage(int number) {
 		
-		this.bookMarkedPage = number;
+		if (number > 0 && number <= this.pages.size()) {
+			this.bookMarkedPage = number;
+		}
+		
 	}
 	
 	/**
